@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Memory Game</title>
+    <script src="js/jQuery/jquery-3.6.0.min.js"></script>
+    <link href="css/game.css" rel="stylesheet" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+
+        <div id="popup0" class="overlay">
+            <div class="popup">
+                <a id="closemenu" href=#>×</a>
+                <div class="content-1">
+                    Cards:
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Select Card</button>
+                    <div class="dropdown-content">
+                        <div class="option selected" id="cats">Cats</div>
+                        <div class="option" id="dogs">Dogs</div>
+                        <div class="option" id="dinosaurs">Dinosaurs</div>
+                    </div>
+                </div>
+                <br />
+                <div class="content-3">
+                    <p>Players:</p>
+                    <form>
+                        <div class="radio">
+                            <input type="radio" class="radiobutton chosen" id="amount1" value="1">
+                            <label for="amount1">1 Player</label>
+                            <input type="radio" class="radiobutton" id="amount2" value="2">
+                            <label for="amount2">2 Players</label>
+                            <input type="radio" class="radiobutton" id="amount3" value="3">
+                            <label for="amount3">3 Players</label>
+                            <input type="radio" class="radiobutton" id="amount4" value="4">
+                            <label for="amount4">4 Players</label>
+                        </div>
+                    </form>
+                </div>
+                <br />
+                <div class="content-2" id="content2">
+                    <div class="form vis" id="1player">
+                        <label class="labelplayer" for="player1">Player 1:</label>
+                        <input type="text" id="player1" class="player" value="Player 1" />
+                    </div>
+                    <div class="form" id="2player">
+                        <label class="labelplayer" for="player2">Player 2:</label>
+                        <input type="text" id="player2" class="player" value="Player 2" />
+                    </div>
+                    <div class="form" id="3player">
+                        <label class="labelplayer" for="player3">Player 3:</label>
+                        <input type="text" id="player3" class="player" value="Player 3" />
+                    </div>
+                    <div class="form" id="4player">
+                        <label class="labelplayer" for="player4">Player 4:</label>
+                        <input type="text" id="player4" class="player" value="Player 4" />
+                    </div>
+                </div>
+            </div>
+            <button id="play" onclick="startGame(); GetPlayersName()">
+                Start Game
+            </button>
+        </div>
+        <div class="gap">
+            <p>  </p>
+        </div>
+        <section class="score-panel">
+            <span class="moves"></span>
+        </section>
+        <div class="players">
+            <div class="name-score" id="namescore1">
+                <div for="score1" id="name1" class="name turn">
+                    Player 1
+                </div>
+                <di>
+                    <input type="text" class="score" id="score1" value="0" disabled />
+                </di>
+            </div>
+            <div class="name-score" id="namescore2">
+                <div for="score2" id="name2" class="name ">
+                    Player 2
+                </div>
+                <di>
+                    <input type="text" class="score" id="score2" value="0" disabled />
+                </di>
+            </div>
+            <div class="name-score" id="namescore3">
+                <div for="score3" id="name3" class="name ">
+                    Player 3
+                </div>
+                <di>
+                    <input type="text" class="score" id="score3" value="0" disabled />
+                </di>
+            </div>
+            <div class="name-score" id="namescore4">
+                <div for="score4" id="name4" class="name ">
+                    Player 4
+                </div>
+                <di>
+                    <input type="text" class="score" id="score4" value="0" disabled />
+                </di>
+            </div>
+        </div>
+        <div style="text-align:center">
+            <button class="home" id="home" onclick=StartMenu(1)>
+                Start New Game
+            </button>
+
+            <button class="restart" id="restart" onclick=startGame()>
+                Restart Game
+            </button>
+        </div>
+        <section class="deck" id="card-deck">
+            <div class="card" data-framework="img1">
+                <img class="face" src="imgs/cats/img1.jpg" alt="img1" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img1">
+                <img class="face" src="imgs/cats/img1.jpg" alt="img1" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img2">
+                <img class="face" src="imgs/cats/img2.jpg" alt="img2" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img2">
+                <img class="face" src="imgs/cats/img2.jpg" alt="img2" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img3">
+                <img class="face" src="imgs/cats/img3.jpg" alt="img3" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img3">
+                <img class="face" src="imgs/cats/img3.jpg" alt="img3" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img4">
+                <img class="face" src="imgs/cats/img4.jpg" alt="img4" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img4">
+                <img class="face" src="imgs/cats/img4.jpg" alt="img4" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img5">
+                <img class="face" src="imgs/cats/img5.jpg" alt="img5" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img5">
+                <img class="face" src="imgs/cats/img5.jpg" alt="img5" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img6">
+                <img class="face" src="imgs/cats/img6.jpg" alt="img6" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img6">
+                <img class="face" src="imgs/cats/img6.jpg" alt="img6" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+        </section>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html>

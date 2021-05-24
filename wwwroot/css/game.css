@@ -1,0 +1,406 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    height: auto;
+    background: #ffffff;
+    font-size: 16px;
+    box-sizing: inherit;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gap {
+    margin: 10px auto 50px;
+    text-align: center;
+}
+
+.deck {
+    width: 41%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px auto;
+    perspective: 1000px;
+}
+
+
+    .deck .card {
+        height: 3.7rem;
+        width: 3.7rem;
+        margin: auto 0.2rem 0.2rem;
+        position: relative;
+        border-radius: 5px;
+        cursor: pointer;
+        transform: scale(1);
+        transform-style: preserve-3d;
+    }
+
+        .deck .card.show {
+            transform: scale(.97);
+            transition: transform .2s;
+        }
+
+        .deck .card.open {
+            transform: rotateY(180deg);
+            cursor: default;
+        }
+
+
+        .deck .card.match {
+            cursor: default;
+            animation-name: pulse;
+            animation-duration: .75s;
+        }
+
+        .deck .card.unmatched {
+            animation-name: rubberBand;
+            animation-duration: .75s;
+        }
+
+
+        .deck .card.disabled {
+            pointer-events: none;
+            opacity: 0.9;
+        }
+        .deck .card.disableplayground {
+            pointer-events: none;
+            cursor: default;
+        }
+
+
+.face, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #1c7ccc;
+    backface-visibility: hidden;
+}
+
+.face {
+    transform: rotateY(180deg);
+}
+
+
+
+
+.overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #ffffff;
+    width: 85%;
+    position: relative;
+}
+
+    .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close, #closemenu {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .popup .close:hover #closemenu :hover {
+            color: #E5F720;
+        }
+
+    .popup .content-1, .content-0,
+    .content-2 {
+        max-height: 30%;
+        overflow: auto;
+        text-align: center;
+        font-weight: bold;
+    }
+
+#popup1 .content-2 {
+    font-weight: unset;
+}
+
+.content-2 {
+    margin: 5px
+}
+
+.content-0 {
+    display: block;
+}
+
+#closemenu {
+    display: none;
+}
+
+#playername {
+    margin: 0 20px;
+}
+
+.show {
+    visibility: visible !important;
+    opacity: 100 !important;
+}
+
+#starRating li {
+    display: inline-block;
+}
+
+#play, #play-again {
+    padding: 0.7rem 1rem;
+    font-size: 1.1rem;
+    display: block;
+    margin: 0 auto;
+}
+
+#play {
+    margin: -60px auto;
+}
+
+#starRating li {
+    display: inline-block;
+}
+
+.dropbtn {
+    width: 100%;
+    font-size: 15px;
+}
+
+.dropdown {
+    margin: 1%;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-content {
+    font-family: Arial;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 0 36px 0 rgba(5, 0, 0, 0.6);
+    z-index: 1;
+    width: 100%;
+}
+
+    .dropdown-content div {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-content div.selected {
+            background-color: #483c3c;
+            color: #ffffff;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.content-3 {
+    max-height: 30%;
+    overflow: auto;
+    text-align: center;
+}
+
+    .content-3 p {
+        font-weight: bold;
+    }
+
+.radio {
+    margin-top: -10px;
+    font-family: Arial;
+    display: inline-flex;
+    font-size: 18px;
+}
+
+.form {
+    display: none;
+}
+
+    .form.vis {
+        visibility: visible;
+        display: inline-flex;
+        margin: -18px 27px;
+    }
+
+
+
+/*
+ * Styles for the Score Panel
+ */
+.score-panel {
+    text-align: left;
+    margin-bottom: 10px;
+    display: inline;
+}
+
+    .score-panel .restart {
+        float: right;
+        cursor: pointer;
+    }
+
+    .score-panel .home {
+        float: right;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+.moves {
+    display: none;
+}
+
+.timer {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+
+
+/*players*/
+
+.players {
+    display: flex;
+    justify-content: center;
+}
+
+.name-score {
+    display: none;
+    margin: 0px 5px
+}
+
+.name {
+    font-size: 13px;
+    margin: 5px;
+    display: inline;
+}
+
+.player, .score {
+    width: 150px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    text-align: center;
+}
+
+.score {
+    width: 70px;
+}
+
+.name.turn {
+    border: 2px solid black;
+    border-radius: 7px;
+    padding: 10px;
+    -moz-box-shadow: 0px 0px 10px #fee949;
+}
+
+/****** Media queries
+***************************/
+
+
+@media (max-width: 320px) {
+    .deck {
+        width: 85%;
+    }
+
+        .deck .card {
+            height: 4.7rem;
+            width: 4.7rem;
+        }
+}
+
+
+/* For Tablets and larger screens
+****************/
+
+@media (min-width: 768px) {
+    .container {
+        font-size: 22px;
+        height: auto;
+    }
+
+    .deck {
+        width: 430px;
+        height: 530px;
+        margin: 50px auto;
+    }
+
+        .deck .card {
+            height: 100px;
+            width: 125px;
+            margin: auto
+        }
+
+    .dropdown {
+        margin: 0 45% 0 40%;
+    }
+
+    .face, .back {
+        width: 100%;
+        height: 120%;
+    }
+
+    .radio {
+        display: inline;
+        font-size: 22px
+    }
+
+    .dropbtn {
+        font-size: 22px;
+        margin: 1% -20%;
+        width: 60%;
+    }
+
+    .dropdown-content {
+        width: 60%;
+        margin: -1% -20%;
+    }
+
+    .name {
+        font-size: 20px;
+        margin: 5px;
+        display: inline;
+    }
+
+    .youwinner.show {
+        display: block
+    }
+}
